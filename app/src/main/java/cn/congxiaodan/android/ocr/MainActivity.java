@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Bitmap mImage;
     private WebView webResult;
-    private boolean initiated;
+    private boolean isInit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 fileOutputStream = new FileOutputStream(file);
                 fileOutputStream.write(bytes);
                 fileOutputStream.close();
-                initiated = true;
+                isInit = true;
                 Log.d(TAG, "Prepared training data file, file path: " + file.getAbsolutePath());
             } catch (FileNotFoundException e) {
                 Log.e(TAG, "Error opening training data file\n" + e.getMessage());
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG, "Error opening training data file\n" + e.getMessage());
             }
         } else {
-            initiated = true;
+            isInit = true;
             Log.d(TAG, "Training data path: " + file.getAbsolutePath());
         }
         //mImage = BitmapFactory.decodeResource(getResources(), R.mipmap.text_image);
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
     // *note: this is sync result
     public void go(View view) {
-        if (!initiated) return;
+        if (!isInit) return;
         TessBaseAPI api = new TessBaseAPI();
 
         api.setDebug(true);
