@@ -1,2 +1,2 @@
 # AndroidOCR
-♻︎ Android OCR demo power by tess-two
+♻︎ Android OCR demo use [tess-two](https://github.com/rmtheis/tess-two)
